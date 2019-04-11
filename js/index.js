@@ -3,61 +3,42 @@ let bdy;
 let bdm;
 let bdd;
 let gender;
-let games;
+let games = [];
 let note;
 
 // document ready
 $(function() {
     //文字框賦值
     $("#input_name").val('李小華');
-    //文字框取值
-    console.log("name is: " + name);
-
     $("#sel_bdy").val('1983');
-    console.log("bdy: " + bdy);
-
     $("#sel_bdm").val('2');
-    console.log("bdm: " + bdm);
-
     $("#sel_bdd").val('12');
-    console.log("bdd: " + bdd);
-
     $("input[name='radio_gender'][value='f']").prop("checked", true)
-    console.log("gender: " +  gender)
-
     $("input[name='check_games'][value='0']").prop("checked", true)
     $("#check_games_1").prop("checked", true)
-    $.map($("input[name='check_games']:checked"), function (el) {
-        games.push($(el).val())
-    })
-    console.log("games is: " + games);
-
-    //textarea賦值
     $("#text_note").val('Hi!餵食叔叔');
-    //textarea取值
-    console.log("note is: " + note);
 
     //按鈕送出事件，二選一
     // $("#send").on('click', function(e){ send(e); });
     $("#send").click(function(e){ send(e); });
-
-    function send(e)
-    {
-       e.preventDefault();
-       name = $("#input_name").val();
-       bdy = $("#sel_bdy").val();
-       bdm = $("#sel_bdm").val();
-       bdd = $("#sel_bdd").val();
-       gender = $("input[name='radio_gender']:checked").val()
-       games = []
-       note = $("#text_note").val();
-
-       console.log("name is: " + name);
-       console.log("bd is: " + bdy + "-" + bdm + "-" + bdd);
-       console.log("gender is: " + gender);
-       console.log("games is: " + games);
-       console.log("note is: " + note);
-    }
-    
-
 })
+
+function send(e)
+{
+    e.preventDefault();
+    name = $("#input_name").val();
+    bdy = $("#sel_bdy").val();
+    bdm = $("#sel_bdm").val();
+    bdd = $("#sel_bdd").val();
+    gender = $("input[name='radio_gender']:checked").val();
+    $.map($("input[name='check_games']:checked"), function (el) {
+        games.push($(el).val());
+    });
+    note = $("#text_note").val();
+
+    console.log("name is: " + name);
+    console.log("bd is: " + bdy + "-" + bdm + "-" + bdd);
+    console.log("gender is: " + gender);
+    console.log("games is: " + games);
+    console.log("note is: " + note);
+}
