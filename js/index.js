@@ -31,6 +31,7 @@ function send(e)
     bdm = $("#sel_bdm").val();
     bdd = $("#sel_bdd").val();
     gender = $("input[name='radio_gender']:checked").val();
+    games = [];
     $.map($("input[name='check_games']:checked"), function (el) {
         games.push($(el).val());
     });
